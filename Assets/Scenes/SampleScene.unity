@@ -154,9 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a58a511f80209a458bb374c038688a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radiusInner: 0.606
-  thickness: 0.261
-  angularSegmentCount: 3
+  radiusInner: 0.5
+  thickness: 0.25
+  length: 0.01
+  angularSegmentCount: 11
 --- !u!4 &490141811
 Transform:
   m_ObjectHideFlags: 0
@@ -192,7 +193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 966f509c0ec1aa24ca839c2ee8dbe982, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

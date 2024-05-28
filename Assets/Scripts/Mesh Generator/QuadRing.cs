@@ -12,6 +12,9 @@ public class QuadRing : MonoBehaviour
     [Range(0.01f, 1)]
     [SerializeField] float thickness;
 
+    [Range(0.01f, 1)]
+    [SerializeField] float length;
+
     [Range(3,32)]
     [SerializeField] int angularSegmentCount = 3; //detail level
 
@@ -41,14 +44,22 @@ public class QuadRing : MonoBehaviour
 
         int vCount = VertexCount;
         List<Vector3> vertices = new List<Vector3>();
-        for (int i = 0; i < angularSegmentCount; i++)
+        List<Vector3> normals = new List<Vector3>();
+        List<Vector2> uvs = new List<Vector2> ();
+
+        for (int i = 0; i < angularSegmentCount+1; i++)
         {
             float t = i / (float)angularSegmentCount;
             float angRad = t * Mathfs.TAU;
             Vector2 dir = Mathfs.GetUnitVectorByAngle(angRad); //vector pointing in the direction of where two points will lie
 
             vertices.Add(dir * RadiusOuter); //add outer point first
-            vertices.Add(dir * radiusInner); //add inner point
+            vertices.Add((Vector3)dir * radiusInner + new Vector3(0,0,length)); //add inner point
+            normals.Add(Vector3.forward);
+            normals.Add(Vector3.forward);
+
+            uvs.Add(new Vector2(t, 1));
+            uvs.Add(new Vector2(t, 0));
         }
 
         List<int> triangleIndices = new List<int>();
@@ -56,8 +67,8 @@ public class QuadRing : MonoBehaviour
         {
             int indexRoot = i * 2; //root = position on the outer ring we start from to generate the quad
             int indexInnerRoot = indexRoot + 1;
-            int indexOuterNext = (indexRoot + 2) % vCount;
-            int indexInnerNext = (indexRoot + 3) % vCount;
+            int indexOuterNext = indexRoot + 2;
+            int indexInnerNext = indexRoot + 3;
 
             //top triangle
             triangleIndices.Add(indexRoot);
@@ -73,6 +84,7 @@ public class QuadRing : MonoBehaviour
 
         mesh.SetVertices(vertices);
         mesh.SetTriangles(triangleIndices, 0);
-        mesh.RecalculateNormals();
+        mesh.SetNormals(normals); //this takes the place of RecalculateNormals; calculating the manually
+        mesh.SetUVs(0, uvs);
     }
 }
