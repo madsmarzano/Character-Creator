@@ -22,13 +22,6 @@ public class MeshGenerator : MonoBehaviour
 
     void CreateShape()
     {
-        vertices = new Vector3[]
-        {
-            new Vector3 ( 0, 0, 0 ),
-            new Vector3 ( 0, 0, 1 ),
-            new Vector3 ( 1, 0, 0 ),
-            new Vector3 ( 1, 0, 1 )
-        };
 
         triangles = new int[]
         {
