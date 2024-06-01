@@ -58,5 +58,4 @@ public class RoadSegment : MonoBehaviour
 
         return new OrientedPoint(pos, tangent);
     }
-
 }
