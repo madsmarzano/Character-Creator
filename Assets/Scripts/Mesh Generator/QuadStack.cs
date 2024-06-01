@@ -32,6 +32,7 @@ public class QuadStack : MonoBehaviour
 
         List<Vector3> verts = new List<Vector3>();
 
+        //add two verts for each level including base verts
         for (int i = 0; i <= height; i++)
         {
             verts.Add(new Vector3(0, i, 0));
