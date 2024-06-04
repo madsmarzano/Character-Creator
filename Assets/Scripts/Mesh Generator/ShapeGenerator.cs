@@ -7,7 +7,7 @@ public static class ShapeGenerator
 {
     public static Mesh GenerateSphereMesh(MeshRenderer renderer, MeshFilter filter, int resolution, int size, Vector3 direction)
     {
-        renderer.sharedMaterial = new Material(Shader.Find("Custom/Sphere"));
+        renderer.sharedMaterial = new Material(Shader.Find("Standard"));
 
         Mesh planeMesh = UpdateSphereMesh(filter, resolution, size, direction);
 

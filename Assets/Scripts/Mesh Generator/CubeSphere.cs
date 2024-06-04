@@ -34,7 +34,7 @@ public class CubeSphere : MonoBehaviour
             GenerateInitalMesh();
 
         if (resolution != currentResolution || currentSize != size)
-            for (int i = 0; i < 6; i++) // why 6??
+            for (int i = 0; i < 6; i++) 
                 ShapeGenerator.UpdateSphereMesh(filter[i], resolution, size, directions[i]);
 
         currentResolution = resolution;
