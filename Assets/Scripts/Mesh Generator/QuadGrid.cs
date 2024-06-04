@@ -10,13 +10,10 @@ public class QuadGrid : MonoBehaviour
 {
     Mesh mesh;
 
-    Vector3[] vertices; //stores vertices of the mesh
-    int[] triangles; //stores faces of the mesh
-
-    [Range(1, 5)] 
+    [Range(1, 10)] 
     [SerializeField] int height;
 
-    [Range(1, 5)] 
+    [Range(1, 10)] 
     [SerializeField] int length;
 
     private void Awake()
@@ -65,15 +62,27 @@ public class QuadGrid : MonoBehaviour
 
         List<int> triangleIndices = new List<int>();
 
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < height - 1; i++)
         {
-            int p0 = i;
-            int p1 = i + (length + 1);
-            int p2 = i + 1;
+            int root = i * (length + 1);
 
-            triangleIndices.Add(p0);
-            triangleIndices.Add(p1);
-            triangleIndices.Add(p2);
+            for (int j = 0; j < length - 1; j++)
+            {
+                int p0 = root + j;
+                int p1 = p0 + (length + 1);
+                int p2 = p0 + 1;
+                int p3 = p1 + 1;
+
+                triangleIndices.Add(p0);
+                triangleIndices.Add(p1);
+                triangleIndices.Add(p2);
+
+                triangleIndices.Add(p1);
+                triangleIndices.Add(p3);
+                triangleIndices.Add(p2);
+
+            }
+
 
         }
 
