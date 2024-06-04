@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CubeSphere : MonoBehaviour
 {
-    [Range(2, 256)]
+    [Range(2, 20)]
     public int resolution = 10;
 
     [SerializeField, HideInInspector]
