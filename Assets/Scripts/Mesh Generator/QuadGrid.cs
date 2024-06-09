@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
-
-//--by madison marzano 
+/// <summary>
+/// by Madison Marzano
+/// </summary>
 
 public class QuadGrid : MonoBehaviour
 {
