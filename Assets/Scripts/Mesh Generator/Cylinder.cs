@@ -14,20 +14,27 @@ public class Cylinder : MonoBehaviour
 {
     Mesh mesh;
 
-    [Range(2, 10)]
+    [Range(1, 10)]
     [SerializeField] int ringCount;
 
     [Range(3, 32)]
     [SerializeField] int angularSegmentCount = 3; //length; level of detail; whatever u wanna call it
 
+    private int rSIZE = 11;
     [Range(1, 10)]
     [SerializeField] float[] radius;
+
+    // parrallel array used to check if radius has been updated 
+    private float[] currentRadius;
 
     private void Awake()
     {
         mesh = new Mesh();
         mesh.name = "Cylinder";
         GetComponent<MeshFilter>().mesh = mesh;
+        currentRadius = new float[rSIZE];
+
+        GenerateMesh();
     }
 
     //for debugging in the editor
@@ -53,7 +60,32 @@ public class Cylinder : MonoBehaviour
 
     private void Update()
     {
+        //GenerateMesh();
+        for (int i = 0; i <= ringCount; i++)
+        {
+            if (currentRadius[i] != radius[i])
+            {
+                UpdateNeighbors(i);
+            }
+        }
+
+    }
+
+    private void UpdateNeighbors(int index)
+    {
+        if (index - 2 >= 0)
+        {
+            //update left neighbor
+            radius[index-1] = 0.5f * (radius[index] + radius[index - 2]);
+        }
+        if (index + 2 <= ringCount)
+        {
+            //update right neighbor
+            radius[index + 1] = 0.5f * (radius[index] + radius[index + 2]);
+        }
+
         GenerateMesh();
+
     }
 
     private void GenerateMesh()
@@ -77,6 +109,8 @@ public class Cylinder : MonoBehaviour
                 Vector2 dir = Mathfs.GetUnitVectorByAngle(angRad);
 
                 vertices.Add((Vector3)dir * radius[i] + new Vector3(0,0,zPos));
+
+                currentRadius[i] = radius[i];
             }
         }
 
