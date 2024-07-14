@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae14b98eec92f58429e260d667079d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringCount: 10
+  ringCount: 5
   angularSegmentCount: 23
   radius:
   - 1

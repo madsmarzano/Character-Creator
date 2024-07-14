@@ -19,6 +19,7 @@ public class Cylinder : MonoBehaviour
 
     [Range(3, 32)]
     [SerializeField] int angularSegmentCount = 3; //length; level of detail; whatever u wanna call it
+    private int currentSegments;
 
     private int rSIZE = 11;
     [Range(1, 10)]
@@ -69,6 +70,9 @@ public class Cylinder : MonoBehaviour
             }
         }
 
+        if (currentSegments != angularSegmentCount)
+            GenerateMesh();
+
     }
 
     private void UpdateNeighbors(int index)
@@ -91,6 +95,7 @@ public class Cylinder : MonoBehaviour
     private void GenerateMesh()
     {
         mesh.Clear();
+        currentSegments = angularSegmentCount;
 
         //radius = new float[ringCount + 1]; -- working on this
 
