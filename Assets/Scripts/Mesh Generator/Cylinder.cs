@@ -14,14 +14,14 @@ public class Cylinder : MonoBehaviour
 {
     Mesh mesh;
 
-    [Range(1, 10)]
+    [Range(2, 10)]
     [SerializeField] int ringCount;
 
     [Range(3, 32)]
     [SerializeField] int angularSegmentCount = 3; //length; level of detail; whatever u wanna call it
 
     [Range(1, 10)]
-    [SerializeField] float radius;
+    [SerializeField] float[] radius;
 
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class Cylinder : MonoBehaviour
                 float angRad = t * Mathfs.TAU;
                 Vector2 dir = Mathfs.GetUnitVectorByAngle(angRad);
 
-                Gizmos.DrawSphere((Vector3)dir * radius + new Vector3(0, 0, zPos), 0.05f);
+                Gizmos.DrawSphere((Vector3)dir * radius[i] + new Vector3(0, 0, zPos), 0.05f);
             }
         }
     }
@@ -59,6 +59,8 @@ public class Cylinder : MonoBehaviour
     private void GenerateMesh()
     {
         mesh.Clear();
+
+        //radius = new float[ringCount + 1]; -- working on this
 
         List<Vector3> vertices = new List<Vector3>();
 
@@ -74,7 +76,7 @@ public class Cylinder : MonoBehaviour
                 float angRad = t * Mathfs.TAU;
                 Vector2 dir = Mathfs.GetUnitVectorByAngle(angRad);
 
-                vertices.Add((Vector3)dir * radius + new Vector3(0,0,zPos));
+                vertices.Add((Vector3)dir * radius[i] + new Vector3(0,0,zPos));
             }
         }
 
