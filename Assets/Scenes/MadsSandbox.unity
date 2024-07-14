@@ -698,11 +698,16 @@ MonoBehaviour:
   angularSegmentCount: 23
   radius:
   - 1
-  - 1.28
-  - 1.28
-  - 2.17
-  - 2.36
-  - 3.16
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
 --- !u!4 &407920026
 Transform:
   m_ObjectHideFlags: 0
@@ -738,7 +743,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: -3033667219593020291, guid: c15e9d134bcf10343bc4baf8889d90b8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
