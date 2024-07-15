@@ -16,6 +16,7 @@ public class Cylinder : MonoBehaviour
 
     [Range(1, 10)]
     [SerializeField] int ringCount;
+    private int currentRingCount;
 
     [Range(3, 32)]
     [SerializeField] int angularSegmentCount = 3; //length; level of detail; whatever u wanna call it
@@ -70,7 +71,7 @@ public class Cylinder : MonoBehaviour
             }
         }
 
-        if (currentSegments != angularSegmentCount)
+        if (currentSegments != angularSegmentCount || currentRingCount != ringCount)
             GenerateMesh();
 
     }
@@ -96,6 +97,7 @@ public class Cylinder : MonoBehaviour
     {
         mesh.Clear();
         currentSegments = angularSegmentCount;
+        currentRingCount = ringCount;
 
         //radius = new float[ringCount + 1]; -- working on this
 
@@ -107,8 +109,6 @@ public class Cylinder : MonoBehaviour
 
             for (int j = 0; j < angularSegmentCount; j++)
             {
-
-
                 float t = j / (float)angularSegmentCount;
                 float angRad = t * Mathfs.TAU;
                 Vector2 dir = Mathfs.GetUnitVectorByAngle(angRad);
