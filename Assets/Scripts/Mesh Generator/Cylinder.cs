@@ -99,8 +99,6 @@ public class Cylinder : MonoBehaviour
         currentSegments = angularSegmentCount;
         currentRingCount = ringCount;
 
-        //radius = new float[ringCount + 1]; -- working on this
-
         List<Vector3> vertices = new List<Vector3>();
 
         for (int i = 0; i <= ringCount; i++)
