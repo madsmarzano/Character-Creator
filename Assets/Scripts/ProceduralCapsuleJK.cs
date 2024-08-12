@@ -10,7 +10,7 @@ using System.Collections;
 
 
 [RequireComponent( typeof(MeshFilter), typeof(MeshRenderer) )]
-public class ProceduralCapsule : MonoBehaviour 
+public class ProceduralCapsuleJK : MonoBehaviour 
 {
 	#if UNITY_EDITOR
 	[ContextMenu("Generate Procedural Capsule")]

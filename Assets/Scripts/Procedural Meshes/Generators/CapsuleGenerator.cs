@@ -9,9 +9,9 @@ namespace ProceduralMeshes.Generators
     {
         public int Resolution { get; set; }
 
-        public int RingCount => 5; //no less than 3
+        public int RingCount => 27;
 
-        int ResolutionV => 2 * Resolution + RingCount; //temporary +3 representing ring count for center cylinder
+        int ResolutionV => 2 * Resolution + RingCount;
         int ResolutionU => 4 * Resolution;
         public int VertexCount => (ResolutionU + 1) * (ResolutionV + 1) - 2; // the +1 represents the starting index at the south pole
         public int IndexCount => 6 * ResolutionU * (ResolutionV - 1);

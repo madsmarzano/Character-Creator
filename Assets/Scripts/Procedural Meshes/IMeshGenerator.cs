@@ -12,5 +12,6 @@ namespace ProceduralMeshes
         Bounds Bounds { get; }
         int Resolution { get; set; }
 
+
     }
 }
